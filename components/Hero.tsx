@@ -7,18 +7,21 @@ const pillItems = [
     text: "Predictable traffic",
     color: "bg-secondary-4",
     textColor: "secondary-3",
+    rotate: "rotate-5",
   },
   {
     id: 2,
     text: "Measurable growth",
     color: "bg-primary-1",
     textColor: "primary-2",
+    rotate: "rotate-2",
   },
   {
     id: 3,
     text: "One Intelligent Platform",
     color: "bg-secondary-1",
     textColor: "secondary-2",
+    rotate: "-rotate-2",
   },
 ];
 
@@ -27,20 +30,27 @@ export default function Hero() {
     <section className="relative h-svh w-full flex items-center justify-center bg-primary-4">
       <Image
         src="/herobg.svg"
-        alt="LSS Contractor Services"
+        alt="Nexline Services"
         fill
         loading="eager"
         className="object-cover"
       />
-
+      <Image
+        src="/marketing.svg"
+        alt="Nexline Services"
+        width={1000}
+        height={1000}
+        loading="eager"
+        className="absolute -bottom-35 w-100 h-100"
+      />
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <div className="hidden md:flex items-center justify-between gap-4 mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-2 mb-2">
           {pillItems.map((item) => (
             <div
               key={item.id}
-              className={`${item.color} text-${item.textColor} py-2 px-4 rounded-full`}
+              className={`${item.color} ${item.rotate} text-${item.textColor} md:py-2 px-4 rounded-full`}
             >
-              <p>{item.text}</p>
+              <p className="text-sm font-medium">{item.text}</p>
             </div>
           ))}
         </div>

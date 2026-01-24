@@ -4,6 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 const cardItems = [
   {
@@ -99,9 +100,17 @@ const About = () => {
   return (
     <section
       id="about-us"
-      className="min-h-screen w-full flex bg-[#1a2332] text-white"
+      className="min-h-screen w-full flex relative bg-primary-2 text-white"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 py-10 px-5 md:py-15 md:px-20 w-full">
+      {/* <Image
+        src="/yellowblur.svg"
+        alt="Background"
+        width={1000}
+        height={1000}
+        className="absolute z-0 -top-60 right-30 md:-top-40 md:-left-40 w-175 h-175"
+      /> */}
+      <div className="absolute z-0 -left-50 md:bottom-93 md:-left-20 w-89 h-64 md:w-80 md:h-80 bg-secondary-4/10 rounded-full blur-3xl animate-collapsible-up" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 py-10 px-5 md:py-15 md:px-20 w-full relative z-10">
         {/* Left Column - Text Content */}
         <div className="flex flex-col items-start text-left justify-center">
           <h3 className="text-lg md:text-2xl text-secondary-4 font-medium">
@@ -126,7 +135,7 @@ const About = () => {
         </div>
 
         {/* Right Column - Vertical Card Stack */}
-        <div className="relative h-[500px] md:h-[600px] flex items-center justify-center">
+        <div className="relative h-125 md:h-150 flex items-center justify-center">
           <div
             ref={containerRef}
             className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
@@ -150,7 +159,7 @@ const About = () => {
 
               if (position === 0) {
                 // Active/front card - centered
-                translateY = -15;
+                translateY = -25;
                 scale = 1;
                 zIndex = 20;
               } else if (position === 1) {
@@ -190,7 +199,7 @@ const About = () => {
                       style={{ backgroundImage: `url(${item.image})` }}
                     >
                       {/* Gradient Overlay */}
-                      <div className="inset-0 bg-red-700 rounded-2xl"></div>
+                      <div className="inset-0  bg-purple-700"></div>
                     </div>
 
                     {/* Text Content */}
@@ -220,7 +229,7 @@ const About = () => {
           </div>
 
           {/* Indicator dots */}
-          <div className="absolute bottom-1 transform flex gap-2 z-30">
+          <div className="absolute bottom-15 md:bottom-10 transform flex gap-2 z-30">
             {cardItems.map((_, index) => (
               <button
                 key={index}

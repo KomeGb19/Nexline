@@ -64,15 +64,17 @@ const Services = () => {
     >
       {/* Header Text */}
       {/* <div className="absolute left-40 w-250 h-auto top-40 rounded-full inset-0 bg-secondary-2/8 blur-xl group-hover:bg-secondary-2/30 transition-all duration-500 animate-"></div> */}
-      <div className="flex flex-col items-center text-center mb-12 md:mb-16 max-w-4xl mx-auto z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-5xl mb-6 text-secondary-2 font-bold">
-          The Nexline Experience
-        </h1>
-        <p className="text-lg md:text-xl text-primary-3 max-w-2xl">
-          We design and develop the technology that powers your entire digital
-          presence — fast, secure, and built to scale.
-        </p>
-      </div>
+      <ScrollReveal>
+        <div className="flex flex-col items-center text-center mb-12 md:mb-16 max-w-4xl mx-auto z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-5xl mb-6 text-secondary-2 font-bold">
+            The Nexline Experience
+          </h1>
+          <p className="text-lg md:text-xl text-primary-3 max-w-2xl">
+            We design and develop the technology that powers your entire digital
+            presence — fast, secure, and built to scale.
+          </p>
+        </div>
+      </ScrollReveal>
 
       {/* Tab Navigation */}
       <div className="flex justify-center mb-12 md:mb-16 z-10">

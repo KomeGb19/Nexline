@@ -7,6 +7,7 @@ import {
 } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import SlideInLeft from "../animations/SlideInLeft";
+import ScrollReveal from "../animations/ScrollReveal";
 
 interface TimelineEntry {
   id: string;
@@ -39,14 +40,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className=" flex flex-col items-center w-full text-primary-3 px-4 sm:px-6 lg:px-8"
       ref={containerRef}
     >
-      <div className="flex flex-col items-center text-center mb-8 md:mb-8">
-        <h2 className="text-4xl md:text-5xl lg:text-5xl mb-3 md:mb-4 text-secondary-2 font-bold max-w-4xl px-4">
-          Our Trust Process
-        </h2>
-        <p className="text-lg md:text-xl text-primary-3 max-w-2xl px-4">
-          Transformation in every step, the alignment for growth
-        </p>
-      </div>
+      <ScrollReveal>
+        <div className="flex flex-col items-center text-center mb-8 md:mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl mb-3 md:mb-4 text-secondary-2 font-bold max-w-4xl px-4">
+            Our Trust Process
+          </h2>
+          <p className="text-lg md:text-xl text-primary-3 max-w-2xl px-4">
+            Transformation in every step, the alignment for growth
+          </p>
+        </div>
+      </ScrollReveal>
 
       <div
         ref={ref}

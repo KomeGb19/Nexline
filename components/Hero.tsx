@@ -40,7 +40,7 @@ const pillVariants = {
     opacity: 1,
     rotate: index === 0 ? 5 : index === 1 ? 2 : -2,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       damping: 12,
       stiffness: 100,
       delay: 0.2 + index * 0.15,
@@ -66,43 +66,37 @@ export default function Hero() {
         loading="eager"
         className="absolute -bottom-35 w-100 h-100"
       />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-2 mb-2">
-          {pillItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              custom={index}
-              initial="hidden"
-              animate="visible"
-              variants={pillVariants}
-              className={`${item.color} ${item.rotate} text-${item.textColor} md:py-2 px-4 rounded-full`}
-            >
-              <p className="text-sm font-medium">{item.text}</p>
-            </motion.div>
-          ))}
-        </div>
-        <HeroReveal>
+      <HeroReveal>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-2 mb-2">
+            {pillItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                custom={index}
+                initial="hidden"
+                animate="visible"
+                variants={pillVariants}
+                className={`${item.color} ${item.rotate} text-${item.textColor} md:py-2 px-4 rounded-full`}
+              >
+                <p className="text-sm font-medium">{item.text}</p>
+              </motion.div>
+            ))}
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold text-primary-2">
             Power in Visibility.
           </h1>
-        </HeroReveal>
-        <HeroReveal>
           <h1 className="text-4xl md:text-6xl font-bold text-primary-2 mb-6">
             Precision in numbers.
           </h1>
-        </HeroReveal>
-        <HeroReveal>
           <p className="text-lg md:text-2xl font-medium text-primary-2 mb-8 max-w-2xl">
             We help service businesses get more qualified leads with SEO and
             performance marketing.
           </p>
-        </HeroReveal>
-        <HeroReveal>
           <Button className="bg-primary-2 hover:bg-transparent hover:text-primary-2 hover:border hover:border-primary-2 text-primary-3 px-6 py-5 rounded-full text-lg font-medium transition">
             Get a Free Quote
           </Button>
-        </HeroReveal>
-      </div>
+        </div>
+      </HeroReveal>
     </section>
   );
 }

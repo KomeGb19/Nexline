@@ -76,7 +76,10 @@ const faqs = [
 
 const FAQs = () => {
   return (
-    <section className="min-h-screen w-full flex flex-col relative bg-primary-2 py-8 md:py-16 px-4 md:px-8 lg:px-20">
+    <section
+      id="faqs"
+      className="min-h-screen w-full flex flex-col relative bg-primary-2 py-8 md:py-16 px-4 md:px-8 lg:px-20"
+    >
       <ScrollReveal>
         <div className="flex items-center gap-40">
           <div className="flex flex-col">

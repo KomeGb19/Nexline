@@ -58,7 +58,10 @@ const Services = () => {
   const activeContent = tabItems.find((item) => item.label === activeTab);
 
   return (
-    <section className="min-h-screen w-full flex flex-col relative bg-primary-1/8 py-12 md:py-20 px-4 md:px-8 lg:px-20">
+    <section
+      id="services"
+      className="min-h-screen w-full flex flex-col relative bg-primary-1/8 py-12 md:py-20 px-4 md:px-8 lg:px-20"
+    >
       {/* Header Text */}
       {/* <div className="absolute left-40 w-250 h-auto top-40 rounded-full inset-0 bg-secondary-2/8 blur-xl group-hover:bg-secondary-2/30 transition-all duration-500 animate-"></div> */}
       <div className="flex flex-col items-center text-center mb-12 md:mb-16 max-w-4xl mx-auto z-10">

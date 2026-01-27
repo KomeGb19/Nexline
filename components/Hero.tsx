@@ -64,7 +64,7 @@ export default function Hero() {
           We help service businesses get more qualified leads with SEO and
           performance marketing.
         </p>
-        <Button className="bg-primary-2 text-primary-3 px-6 py-5 rounded-full text-lg font-medium hover:bg-primary-3 transition">
+        <Button className="bg-primary-2 hover:bg-transparent hover:text-primary-2 hover:border hover:border-primary-2 text-primary-3 px-6 py-5 rounded-full text-lg font-medium transition">
           Get a Free Quote
         </Button>
       </div>

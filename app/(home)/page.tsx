@@ -1,7 +1,9 @@
 import About from "@/components/About";
 import Banner from "@/components/Banner";
 import CTA from "@/components/CTA";
+import FAQs from "@/components/FAQs";
 import FocusPoint from "@/components/FocusPoint";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MobileHeader from "@/components/MobileHeader";
@@ -25,6 +27,8 @@ export default function HomePage() {
       <Services />
       <Process />
       <CTA />
+      <FAQs />
+      <Footer />
     </div>
   );
 }

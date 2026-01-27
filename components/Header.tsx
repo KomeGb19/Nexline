@@ -36,10 +36,7 @@ const Header = () => {
         transition-all duration-300 ease-in-out"
     >
       <div className="mx-auto mt-4 max-w-7xl bg-primary-2 w-full p-4 rounded-full flex justify-between items-center">
-        <Link
-          href="/"
-          className="ml-10"
-        >
+        <Link href="/" className="ml-10">
           <Image
             src="/logo.svg"
             alt="LSS Contractors"
@@ -67,7 +64,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <Button className="bg-primary-4 text-primary-2 p-4 rounded-full">
+        <Button className="bg-primary-4 hover:bg-primary-1/10 hover:text-primary-4 hover:border hover:border-primary-4 text-primary-2 p-4 rounded-full">
           Get Started
         </Button>
       </div>

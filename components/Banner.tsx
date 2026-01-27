@@ -44,7 +44,7 @@ const Banner = () => {
               We understand your business goals, challenges, and growth
               opportunities.
             </p>
-            <button className="bg-primary-4 hover:bg-primary-4/80 text-slate-900 font-semibold px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-base transition-colors whitespace-nowrap">
+            <button className="bg-primary-4 hover:bg-primary-4/80 text-primary-2 font-semibold px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-base transition-colors">
               Discover More
             </button>
           </div>

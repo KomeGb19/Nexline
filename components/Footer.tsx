@@ -70,7 +70,7 @@ const Footer = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
         {Object.entries(footerSections).map(([key, section]) => (
           <div key={key}>
-            <h3 className="text-primary-4 text-xs font-semibold mb-4 tracking-wider">
+            <h3 className="text-primary-4 text-sm font-semibold mb-4 tracking-wider">
               {section.title}
             </h3>
             <ul className="space-y-3">
@@ -119,8 +119,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="flex flex-col md:flex-row items-center justify-between text-[#6B8580] text-sm">
         <p className="mb-4 md:mb-0">
-          © {new Date().getFullYear()} Nexline. All
-          rights reserved.
+          © {new Date().getFullYear()} Nexline. All rights reserved.
         </p>
 
         <div className="flex flex-wrap items-center gap-6">

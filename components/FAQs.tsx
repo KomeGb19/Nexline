@@ -7,6 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SlideInLeft from "./animations/SlideInLeft";
+import ScaleInReveal from "./animations/ScaleInReveal";
+import ScrollReveal from "./animations/ScrollReveal";
 
 const faqs = [
   {
@@ -74,53 +77,60 @@ const faqs = [
 const FAQs = () => {
   return (
     <section className="min-h-screen w-full flex flex-col relative bg-primary-2 py-8 md:py-16 px-4 md:px-8 lg:px-20">
-      <div className="flex items-center gap-40">
-        <div className="flex flex-col">
-          <h1 className="text-2xl md:text-5xl font-bold">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-primary-4 text-base md:text-2xl max-w-2xl">
-            Find answers to common questions about AI-powered content creation,
-            campaign automation, and analytics tools.
-          </p>
-        </div>
-        <div className="relative flex-col hidden lg:block">
-          <span className="mb">
-            <h2 className="font-bold text-lg">Got more questions ?</h2>
-            <p>All you need to know in one place</p>
-          </span>
-          <Button
-            variant="outline"
-            className="rounded-full hover:bg-secondary-2/30 hover:text-primary-3 mt-4 text-secondary-2 border border-secondary-2 bg-transparent w-3/6"
-          >
-            Get in Touch
-          </Button>
+      <ScrollReveal>
+        <div className="flex items-center gap-40">
+          <div className="flex flex-col">
+            <h1 className="text-2xl md:text-5xl font-bold">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-primary-4 text-base md:text-2xl max-w-2xl">
+              Find answers to common questions about AI-powered content
+              creation, campaign automation, and analytics tools.
+            </p>
+          </div>
+          <div className="relative flex-col hidden lg:block">
+            <span className="mb">
+              <h2 className="font-bold text-lg">Got more questions ?</h2>
+              <p>All you need to know in one place</p>
+            </span>
+            <Button
+              variant="outline"
+              className="rounded-full hover:bg-secondary-2/30 hover:text-primary-3 mt-4 text-secondary-2 border border-secondary-2 bg-transparent w-3/6"
+            >
+              Get in Touch
+            </Button>
 
-          <Image
-            src="/question.svg"
-            alt="Frequently Asked Questions"
-            width={400}
-            height={400}
-            className="absolute w-25 top-10 -right-20"
-          />
+            <Image
+              src="/question.svg"
+              alt="Frequently Asked Questions"
+              width={400}
+              height={400}
+              className="absolute w-25 top-10 -right-20"
+            />
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
+
       <div className="mt-10 md:mt-20">
         <Accordion type="single" collapsible className="space-y-4 mb-2">
           {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="active:bg-secondary-2/5 hover:bg-secondary-2/10 active:border active:border-secondary-2 rounded-3xl px-5 md:px-6"
-            >
-              <AccordionTrigger className="text-left text-base md:text-lg font-semibold text-primary-3 hover:no-underline py-5 md:py-6">
-                {faq.question}
-              </AccordionTrigger>
+            <ScrollReveal>
+              <ScaleInReveal>
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="active:bg-secondary-2/5 hover:bg-secondary-2/10 active:border active:border-secondary-2 rounded-3xl px-5 md:px-6"
+                >
+                  <AccordionTrigger className="text-left text-base md:text-lg font-semibold text-primary-3 hover:no-underline py-5 md:py-6">
+                    {faq.question}
+                  </AccordionTrigger>
 
-              <AccordionContent className="text-primary-3/80 text-sm md:text-base leading-relaxed pb-5 md:pb-6">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+                  <AccordionContent className="text-primary-3/80 text-sm md:text-base leading-relaxed pb-5 md:pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </ScaleInReveal>
+            </ScrollReveal>
           ))}
         </Accordion>
       </div>

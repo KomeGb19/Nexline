@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import SlideInLeft from "./animations/SlideInLeft";
 
 const cardItems = [
   {
@@ -113,22 +114,24 @@ const About = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 py-10 px-5 md:py-15 md:px-20 w-full relative z-10">
         {/* Left Column - Text Content */}
         <div className="flex flex-col items-start text-left justify-center">
-          <h3 className="text-lg md:text-2xl text-secondary-4 font-medium">
-            Your growth partner for businesses.
-          </h3>
-          <h1 className="text-3xl md:text-5xl max-w-2xl font-bold mt-4">
-            Nexline builds and manages the entire growth ecosystem.
-          </h1>
-          <p className="text-base md:text-lg max-w-xl mt-6 text-gray-300">
-            Nexline is a technology and growth partner for businesses that want
-            more than just a website.
-          </p>
-          <p className="text-base md:text-lg max-w-xl mt-4 text-gray-300">
-            We build end‑to‑end digital infrastructure that helps companies
-            attract customers, convert leads, and scale operations, all powered
-            by AI and data.
-          </p>
+          <SlideInLeft>
+            <h3 className="text-lg md:text-2xl text-secondary-4 font-medium">
+              Your growth partner for businesses.
+            </h3>
+            <h1 className="text-3xl md:text-5xl max-w-2xl font-bold mt-4">
+              Nexline builds and manages the entire growth ecosystem.
+            </h1>
 
+            <p className="text-base md:text-lg max-w-xl mt-6 text-gray-300">
+              Nexline is a technology and growth partner for businesses that
+              want more than just a website.
+            </p>
+            <p className="text-base md:text-lg max-w-xl mt-4 text-gray-300">
+              We build end‑to‑end digital infrastructure that helps companies
+              attract customers, convert leads, and scale operations, all
+              powered by AI and data.
+            </p>
+          </SlideInLeft>
           <Button className="mt-8 py-3 px-8 md:px-12 md:py-6 text-base md:text-lg rounded-full bg-secondary-4 hover:bg-secondary-4/80 text-primary-2 font-bold">
             Get Started
           </Button>

@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import { useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 
 const menuItems = [
@@ -27,16 +30,53 @@ const menuItems = [
   },
 ];
 
-
-
 const Header = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const router = useRouter();
+
+  const handleSectionNavigate = useCallback(
+    (targetId: string) => {
+      // If it's the home link, just navigate to home
+      if (targetId === "/") {
+        router.push("/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const navigateHomeWithHash = () => {
+        router.push(`/#${targetId}`);
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const section = document.getElementById(targetId);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      };
+
+      if (typeof document !== "undefined" && isHomePage) {
+        const section = document.getElementById(targetId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          navigateHomeWithHash();
+        }
+      } else {
+        navigateHomeWithHash();
+      }
+    },
+    [isHomePage, router],
+  );
+
   return (
-    <header
-      className="w-full text-white fixed top-0 left-0 z-50 px-10
-        transition-all duration-300 ease-in-out"
-    >
+    <header className="w-full text-white fixed top-0 left-0 z-50 px-10 transition-all duration-300 ease-in-out">
       <div className="mx-auto mt-4 max-w-7xl bg-primary-2 w-full p-4 rounded-full flex justify-between items-center">
-        <Link href="/" className="ml-10">
+        <Link
+          href="/"
+          className="ml-10"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <Image
             src="/logo.svg"
             alt="LSS Contractors"
@@ -49,18 +89,17 @@ const Header = () => {
 
         <nav className="hidden lg:flex items-center gap-8 backdrop-blur-lg rounded-full shadow-md hover:shadow-lg transition">
           {menuItems.map((item, index) => (
-            <Link
+            <button
               key={index}
-              href={`/#${item.targetId}`}
               aria-label={item.ariaLabel}
-              className="text-sm font-medium hover:text-primary-4  rounded-full transition"
-              /* onClick={(event) => {
+              className="text-sm font-medium hover:text-primary-4 rounded-full transition"
+              onClick={(event) => {
                 event.preventDefault();
                 handleSectionNavigate(item.targetId);
-              }} */
+              }}
             >
               {item.label}
-            </Link>
+            </button>
           ))}
         </nav>
 

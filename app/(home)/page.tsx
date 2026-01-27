@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 import Banner from "@/components/Banner";
 import CTA from "@/components/CTA";
 import FAQs from "@/components/FAQs";
@@ -22,8 +23,13 @@ export default function HomePage() {
       </div>
       <Hero />
       <About />
-      <Banner />
-      <FocusPoint />
+      <ScrollReveal>
+        <Banner />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <FocusPoint />
+      </ScrollReveal>
       <Services />
       <Process />
       <CTA />

@@ -4,7 +4,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <section className="min-h-screen w-full flex flex-col relative bg-primary-2 py-8 md:py-16 px-4 md:px-8 lg:px-20">
+    <section className="min-h-screen w-full flex flex-col relative bg-primary-2 py-6 md:py-16 px-4 md:px-8 lg:px-20">
       {/* Background decorative element */}
       <div className="absolute z-0 bottom- left-1/2 -translate-x-1/2 w-80 h-64 md:w-250 md:h-150 bg-primary-1/30 rounded-full blur-3xl animate-pulse" />
 
@@ -18,8 +18,8 @@ const Banner = () => {
           Refine your brand voice based on real data, not just suggestions
         </p>
       </div>
-
       {/* Image Container - Responsive */}
+      
       <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-125 mb-4 md:mb-0">
         <video
           src="/banner.mp4"

@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useCallback } from "react";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 const menuItems = [
   {
@@ -31,18 +32,60 @@ const menuItems = [
   },
 ];
 
-
-
 const MobileHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("/");
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const router = useRouter();
+
+  const handleSectionNavigate = useCallback(
+    (targetId: string) => {
+      // If it's the home link, just navigate to home
+      if (targetId === "/") {
+        router.push("/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setIsMenuOpen(false);
+        setActiveTab(targetId);
+        return;
+      }
+
+      const navigateHomeWithHash = () => {
+        router.push(`/#${targetId}`);
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const section = document.getElementById(targetId);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      };
+
+      if (typeof document !== "undefined" && isHomePage) {
+        const section = document.getElementById(targetId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          navigateHomeWithHash();
+        }
+      } else {
+        navigateHomeWithHash();
+      }
+
+      setIsMenuOpen(false);
+      setActiveTab(targetId);
+    },
+    [isHomePage, router],
+  );
+
   return (
-    <header
-      className="w-full text-white fixed top-0 left-0 z-50  bg-primary-4 backdrop-blur-3xl
-        transition-all duration-300 ease-in-out"
-    >
+    <header className="w-full text-white fixed top-0 left-0 z-50 bg-primary-4 backdrop-blur-3xl transition-all duration-300 ease-in-out">
       <div className="w-full p-6 rounded-full flex justify-between items-center">
-        <Link href="/" className="rounded-full transition">
+        <Link
+          href="/"
+          className="rounded-full transition"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <Image
             src="/logoblack.svg"
             alt="LSS Contractors"
@@ -80,7 +123,14 @@ const MobileHeader = () => {
         }`}
       >
         <div className="flex items-center justify-between mb-6">
-          <Link href="/" aria-label="Home">
+          <Link
+            href="/"
+            aria-label="Home"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setIsMenuOpen(false);
+            }}
+          >
             <Image
               src="/logo.svg"
               alt="Logo"
@@ -100,21 +150,17 @@ const MobileHeader = () => {
         </div>
 
         {menuItems.map((item) => (
-          <Link
+          <button
             key={item.targetId}
-            href={`/#${item.targetId}`}
-            className={`text-4xl font-bold py-4 transition-colors ${
+            className={`text-4xl font-bold py-4 transition-colors text-left ${
               activeTab === item.targetId
                 ? "text-primary-4"
                 : "text-primary-3 hover:text-primary-4"
             }`}
-            onClick={() => {
-              setActiveTab(item.targetId);
-              setIsMenuOpen(false);
-            }}
+            onClick={() => handleSectionNavigate(item.targetId)}
           >
             {item.label}
-          </Link>
+          </button>
         ))}
       </div>
     </header>

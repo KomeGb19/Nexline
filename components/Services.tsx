@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { BadgeCheck, Check } from "lucide-react";
+import ScaleInReveal from "./animations/ScaleInReveal";
+import ScrollReveal from "./animations/ScrollReveal";
 
 const tabItems = [
   {
@@ -71,7 +73,7 @@ const Services = () => {
 
       {/* Tab Navigation */}
       <div className="flex justify-center mb-12 md:mb-16 z-10">
-        <div className="flex bg-primary-1/10 backdrop-blur-sm rounded-full p-2 gap-2 overflow-x-scroll">
+        <div className="flex bg-primary-1/10 backdrop-blur-sm rounded-full p-2 gap-2 max-sm:overflow-x-scroll">
           {tabItems.map((item) => (
             <button
               key={item.label}
@@ -89,53 +91,61 @@ const Services = () => {
       </div>
 
       {/* Content Grid */}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 max-w-7xl mx-auto w-full">
         {/* Image Card */}
-        <div className="relative group">
-          <div className="relative rounded-3xl border-4 border-secondary-2">
-            <img
-              src={activeContent?.image}
-              alt={activeContent?.displayLabel}
-              className="w-full h-64 md:h-80 lg:h-106 object-cover rounded-2xl"
-            />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-secondary-2 text-primary-2 font-medium px-6 py-2 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
-                Learn More
-              </button>
+        <ScaleInReveal>
+          <div className="relative group">
+            <div className="relative rounded-3xl border-4 border-secondary-2">
+              <img
+                src={activeContent?.image}
+                alt={activeContent?.displayLabel}
+                className="w-full h-64 md:h-80 lg:h-106 object-cover rounded-2xl"
+              />
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+                <button className="bg-secondary-2 text-primary-2 font-medium px-6 py-2 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
+                  Learn More
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </ScaleInReveal>
 
         {/* Content Card */}
+
         <div className="flex flex-col gap-6">
           {/* Header Card */}
-          <div className="bg-primary-4 rounded-3xl p-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary-2">
-              {activeContent?.header}
-            </h2>
-            <p className="text-primary-2 text-base font-medium leading-relaxed">
-              {activeContent?.subtext}
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="bg-primary-4 rounded-3xl p-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary-2">
+                {activeContent?.header}
+              </h2>
+              <p className="text-primary-2 text-base font-medium leading-relaxed">
+                {activeContent?.subtext}
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* Points Card */}
-          <div className="bg-secondary-2 rounded-3xl p-8">
-            <div className="space-y-4">
-              {activeContent?.points.map((point) => (
-                <div key={point.id} className="flex items-start gap-4 group">
-                  <div className="shrink-0 w-6 h-6 rounded-full bg-secondary-1 flex items-center justify-center mt-0.5 transition-colors">
-                    <BadgeCheck
-                      className="w-4 h-4 text-secondary-2"
-                      strokeWidth={3}
-                    />
+          <ScrollReveal>
+            <div className="bg-secondary-2 rounded-3xl p-8">
+              <div className="space-y-4">
+                {activeContent?.points.map((point) => (
+                  <div key={point.id} className="flex items-start gap-4 group">
+                    <div className="shrink-0 w-6 h-6 rounded-full bg-secondary-1 flex items-center justify-center mt-0.5 transition-colors">
+                      <BadgeCheck
+                        className="w-4 h-4 text-secondary-2"
+                        strokeWidth={3}
+                      />
+                    </div>
+                    <p className="text-primary-2 text-base md:text-lg font-medium">
+                      {point.text}
+                    </p>
                   </div>
-                  <p className="text-primary-2 text-base md:text-lg font-medium">
-                    {point.text}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

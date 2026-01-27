@@ -6,6 +6,7 @@ import {
   motion,
 } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+import SlideInLeft from "../animations/SlideInLeft";
 
 interface TimelineEntry {
   id: string;
@@ -65,14 +66,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               </div>
             </div>
 
-            <div className="relative w-full pr-4 bg-secondary-2/8 rounded-3xl p-4 sm:pr-6 md:pr-8">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-2 sm:mb-3 md:mb-4 text-left font-bold text-secondary-2">
-                {item.title}
-              </h3>
-              <div className="text-sm sm:text-base md:text-lg">
-                {item.content}
+            <SlideInLeft>
+              <div className="relative w-full pr-4 bg-secondary-2/8 rounded-3xl p-4 sm:pr-6 md:pr-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-2 sm:mb-3 md:mb-4 text-left font-bold text-secondary-2">
+                  {item.title}
+                </h3>
+                <div className="text-sm sm:text-base md:text-lg">
+                  {item.content}
+                </div>
               </div>
-            </div>
+            </SlideInLeft>
           </div>
         ))}
         <div

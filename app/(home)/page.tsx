@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MobileHeader from "@/components/MobileHeader";
+import PricingPage from "@/components/pricing/PricingPage";
 import Process from "@/components/Process";
 import Services from "@/components/Services";
 import { Motorbike } from "lucide";
@@ -32,6 +33,7 @@ export default function HomePage() {
       </ScrollReveal>
       <Services />
       <Process />
+      <PricingPage />
       <CTA />
       <FAQs />
       <Footer />

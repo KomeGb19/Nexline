@@ -15,10 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nexline",
-  description: "Power in Visibility",
-  /* icons: {
-    icon: "/logos/logo.svg",
-  }, */
+  description:
+    "Power in Visibility, Helping businesses move beyond the horizon!",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-primary-2 text-primary-3">
         {children}
-        <BackToTop/>
+        <BackToTop />
       </body>
     </html>
   );
